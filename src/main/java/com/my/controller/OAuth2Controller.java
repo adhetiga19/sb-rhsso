@@ -16,8 +16,8 @@ public class OAuth2Controller {
     @Value("${spring.security.oauth2.client.registration.keycloak.client-id}")
     private String clientId;
 
-//    @Value("${spring.security.oauth2.client.registration.keycloak.client-secret}")
-//    private String clientSecret;
+    @Value("${spring.security.oauth2.client.registration.keycloak.client-secret}")
+    private String clientSecret;
 
     @Value("${spring.security.oauth2.client.registration.keycloak.redirect-uri}")
     private String redirectUri;
@@ -39,7 +39,7 @@ public class OAuth2Controller {
         body.add("code", code);
         body.add("redirect_uri", redirectUri);
         body.add("client_id", clientId);
-        body.add("client_secret", "");
+        body.add("client_secret", clientSecret);
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(body, headers);
 
